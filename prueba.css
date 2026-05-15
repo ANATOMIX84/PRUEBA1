@@ -1,0 +1,230 @@
+/* --- VARIABLES DE COLOR (Esquema Oscuro Eléctrico) --- */
+:root {
+    --bg-dark: #0a0a0f;
+    --panel-bg: rgba(16, 16, 24, 0.75);
+    --neon-cyan: #00f0ff;
+    --neon-magenta: #ff007f;
+    --text-gray: #7e7e8c;
+    --border-color: rgba(0, 240, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- RED GEOMÉTRICA DE FONDO --- */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center;
+    z-index: 0;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.login-card {
+    position: relative;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem 3rem;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 4px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 240, 255, 0.05);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Esquina decorativa industrial */
+.login-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 15px; height: 15px;
+    background: var(--neon-cyan);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+/* --- LOGOTIPO COMPLEJO --- */
+.logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hexágono exterior */
+.tech-hexagon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: 2px solid var(--neon-cyan);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: rotateHex 12s linear infinite;
+    opacity: 0.7;
+}
+
+/* Triángulos internos contrapuestos */
+.tech-core {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--neon-magenta);
+    animation: pulseCore 2s ease-in-out infinite alternate;
+}
+
+.tech-core::before {
+    content: '';
+    position: absolute;
+    top: 15px; left: -20px;
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 35px solid var(--neon-cyan);
+    mix-blend-mode: screen;
+}
+
+/* Anillo de datos fragmentado */
+.data-ring {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border: 2px dashed rgba(255, 0, 127, 0.4);
+    border-radius: 50%;
+    animation: spinRing 6s linear infinite reverse;
+}
+
+/* --- FORMULARIO --- */
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+/* Ícono abstracto lateral (//) */
+.form-group::before {
+    content: '//';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    font-family: monospace;
+    transition: color 0.4s;
+}
+
+/* Efecto de enfoque en el input */
+.form-group input:focus {
+    border-bottom-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.02);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.05);
+}
+
+/* LÓGICA CSS PURA: Mueve la etiqueta si el input está enfocado O si ya tiene texto dentro */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label {
+    top: -12px;
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+}
+
+.form-group label {
+    position: absolute;
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+/* Acciones extra */
+.extra-actions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.extra-actions a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.extra-actions a:hover {
+    color: var(--neon-magenta);
+}
+
+/* --- BOTÓN --- */
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.submit-btn:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+}
+
+/* --- KEYFRAMES (Animaciones continuas) --- */
+@keyframes rotateHex {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRing {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseCore {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 8px var(--neon-magenta)); }
+}

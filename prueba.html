@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Tech Avanzado</title>
+    <link rel="stylesheet" href="prueba.css">
 </head>
 <body>
-    <H1>HOLA</H1>
+
+    <div class="login-card">
+        <!-- Logo Complejo CSS -->
+        <div class="logo-container">
+            <div class="data-ring"></div>
+            <div class="tech-hexagon"></div>
+            <div class="tech-core"></div>
+        </div>
+
+        <!-- Formulario Nativo HTML -->
+        <form action="#" method="POST">
+            <div class="form-group">
+                <!-- El placeholder con un espacio " " es vital para el truco de CSS -->
+                <input type="text" id="user" placeholder=" " required autocomplete="off">
+                <label for="user">IDENTIFICADOR</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" id="pass" placeholder=" " required>
+                <label for="pass">CLAVE DE ACCESO</label>
+            </div>
+
+            <div class="extra-actions">
+                <a href="#">SOPORTE TÉCNICO</a>
+                <a href="#">¿REINICIAR CREDENCIALES?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">INGRESAR</button>
+        </form>
+    </div>
+
 </body>
 </html>
